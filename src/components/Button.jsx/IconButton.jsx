@@ -8,9 +8,9 @@ const Button = styled(Link)`
   justify-content: center;
   height: 3.8rem;
   width: 3.8rem;
-  color: #3c0066;
+  color: ${(props) => (props.altern ? "white" : "#3c0066")};
 
-  background-color: #f2f2f2;
+  background-color: ${(props) => (!props.altern ? "#f2f2f2" : "#3c0066")};
   text-decoration: none;
   /* padding: 1rem; */
   border-radius: 1rem;

@@ -18,7 +18,7 @@ const Home = () => {
     <>
       <TopBar>
         <Title>Contactos</Title>
-        <IconButton link to="/add">
+        <IconButton link to="/add" altern="true">
           <IconWrapper>
             <FaPlus />
           </IconWrapper>
