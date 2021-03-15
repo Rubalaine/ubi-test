@@ -32,14 +32,14 @@ const ContactList = () => {
   }, []);
   return (
     contacts.contacts.length &&
-    contacts.contacts.map((contact) => {
+    contacts.contacts.map((contact) => (
       <ContactCard
         image=""
         key={contact.id}
         name={contact.name}
         contact={"+258 " + contact.phone}
-      />;
-    })
+      />
+    ))
   );
 };
 

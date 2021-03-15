@@ -5,6 +5,7 @@ import Paragraph from "../Typography/Paragraph";
 import { MdEdit, MdDelete } from "react-icons/md";
 import IconButton from "./../Button.jsx/IconButton";
 import IconWrapper from "../wrappers/IconWrapper";
+import Spacer from "../Utils/Spacer";
 
 const Card = styled.div`
   color: black;
@@ -21,23 +22,26 @@ const CardImage = styled.img`
 `;
 const TextCard = styled.div``;
 const ContactCard = ({ image, name, contact }) => (
-  <Card>
-    <CardImage src={image} alt={name} />
-    <TextCard>
-      <HeadingSecondary>{name} name</HeadingSecondary>
-      <Paragraph>{contact}</Paragraph>
-    </TextCard>
-    <IconButton>
-      <IconWrapper size={3.5}>
-        <MdDelete />
-      </IconWrapper>
-    </IconButton>
-    <IconButton>
-      <IconWrapper size={3.5}>
-        <MdEdit />
-      </IconWrapper>
-    </IconButton>
-  </Card>
+  <>
+    <Card>
+      <CardImage src={image} alt={name} />
+      <TextCard>
+        <HeadingSecondary>{name} name</HeadingSecondary>
+        <Paragraph>{contact}</Paragraph>
+      </TextCard>
+      <IconButton>
+        <IconWrapper size={3.5}>
+          <MdDelete />
+        </IconWrapper>
+      </IconButton>
+      <IconButton>
+        <IconWrapper size={3.5}>
+          <MdEdit />
+        </IconWrapper>
+      </IconButton>
+    </Card>
+    <Spacer size={2} />
+  </>
 );
 
 export default ContactCard;
