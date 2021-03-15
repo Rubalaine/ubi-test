@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-const Icon = styled.i`
+const Icon = styled.div`
   display: inline-block;
   color: currentColor;
   font-size: ${(props) => props.size || 1.6}rem;

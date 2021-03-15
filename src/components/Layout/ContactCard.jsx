@@ -26,15 +26,15 @@ const ContactCard = ({ image, name, contact }) => (
     <Card>
       <CardImage src={image} alt={name} />
       <TextCard>
-        <HeadingSecondary>{name} name</HeadingSecondary>
+        <HeadingSecondary>{name}</HeadingSecondary>
         <Paragraph>{contact}</Paragraph>
       </TextCard>
-      <IconButton>
+      <IconButton to="/">
         <IconWrapper size={3.5}>
           <MdDelete />
         </IconWrapper>
       </IconButton>
-      <IconButton>
+      <IconButton to="/edit">
         <IconWrapper size={3.5}>
           <MdEdit />
         </IconWrapper>
