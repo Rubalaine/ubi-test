@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import HeadingSecondary from "../Typography/HeadingSecondary";
 import Paragraph from "../Typography/Paragraph";
 import { MdEdit, MdDelete } from "react-icons/md";
 import IconButton from "./../Button.jsx/IconButton";
@@ -9,6 +8,7 @@ import Spacer from "../Utils/Spacer";
 import { useContacts } from "../../context/ContactsContext";
 import Modal from "../Utils/Modal";
 import axios from "axios";
+import HeadingTertiary from "../Typography/HeadingTertiary";
 
 const Card = styled.div`
   color: black;
@@ -22,6 +22,9 @@ const Card = styled.div`
 const CardImage = styled.img`
   height: 5rem;
   width: 5rem;
+  display: inline-block;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 `;
 const Buttons = styled.div`
   width: 9rem;
@@ -70,11 +73,13 @@ const ContactCard = ({ image, name, contact, id }) => {
   };
   return (
     <>
-      {showModal ? <Modal hideEvent={unMountModal} id={id} deleteEvent={handleDelete}/> : null}
+      {showModal ? (
+        <Modal hideEvent={unMountModal} id={id} deleteEvent={handleDelete} />
+      ) : null}
       <Card onClick={handleClick}>
         <CardImage src={image} alt={name} />
         <TextCard>
-          <HeadingSecondary>{name}</HeadingSecondary>
+          <HeadingTertiary>{name}</HeadingTertiary>
           <Paragraph>{contact}</Paragraph>
         </TextCard>
         <Buttons visible={clicked}>

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useContacts } from "../../context/ContactsContext";
 import Paragraph from "../Typography/Paragraph";
 import Spacer from "../Utils/Spacer";
+import picture from "./../../assets/person-24px.svg";
 const ContactList = () => {
   const [contacts, setContacts] = useContacts();
   useEffect(() => {
@@ -32,7 +33,7 @@ const ContactList = () => {
   return contacts.filtered.length ? (
     contacts.filtered.map((contact) => (
       <ContactCard
-        image=""
+        image={picture}
         id={contact.id}
         key={contact.id}
         name={contact.name}
