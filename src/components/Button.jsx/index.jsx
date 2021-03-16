@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Btn = styled.button`
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  background-color: #3c0066;
-  color: white;
+  background-color: ${(props) => (props.altern ? "#F2F2F2" : "#3c0066")};
+  color: ${(props) => (!props.altern ? "white" : "#3c0066")};
   padding: 1rem;
   text-align: center;
   border-radius: 3px;
@@ -22,8 +22,14 @@ const Lnk = styled(Link)`
   border-radius: 3px;
   cursor: pointer;
 `;
-const Button = ({ children, link, to }) => {
-  return link ? <Lnk to={to}>{children}</Lnk> : <Btn>{children}</Btn>;
+const Button = ({ children, link, to, clicked, altern }) => {
+  return link ? (
+    <Lnk to={to}>{children}</Lnk>
+  ) : (
+    <Btn onClick={clicked} altern={altern}>
+      {children}
+    </Btn>
+  );
 };
 
 export default Button;

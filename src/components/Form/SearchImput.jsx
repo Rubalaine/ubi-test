@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import searchIcon from "./../../assets/search-24px.svg";
 import IconWrapper from "./../wrappers/IconWrapper";
+import { MdSearch } from "react-icons/md";
+import { useContacts } from "../../context/ContactsContext";
 const Search = styled.form`
   background-color: #f2f2f2;
   color: #b3b3b3;
@@ -29,18 +30,29 @@ const Input = styled.input`
 `;
 
 const SearchImput = () => {
-  const [searchText, setSearchText] = useState("");
+  const [contacts, setContacts] = useContacts();
+  const [filterText, setFilterText] = useState("");
+  useEffect(() => {
+    console.log(filterText);
+    setContacts({
+      ...contacts,
+      filtered: contacts.list.filter((el) =>
+        el.name.toLowerCase().includes(filterText)
+      ),
+    });
+    // eslint-disable-next-line
+  }, [filterText]);
+  const filter = (event) => {
+    setFilterText(event.target.value);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-  const handleChange = (event) => {
-    setSearchText(event.target.value);
-  };
   return (
-    <Search>
-      <Input type="text" placeholder="Pesquisar" onChange={handleChange} />
+    <Search onSubmit={handleSubmit}>
+      <Input type="text" placeholder="Pesquisar" onChange={filter} />
       <IconWrapper>
-        <use xlinkHref={searchIcon + "#search"}></use>
+        <MdSearch />
       </IconWrapper>
     </Search>
   );

@@ -11,6 +11,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #3c0066;
 }
 html {
   font-size: 62.5%;

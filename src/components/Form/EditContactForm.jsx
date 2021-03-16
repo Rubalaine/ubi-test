@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useContacts } from "../../context/ContactsContext.jsx";
 import Button from "../Button.jsx";
 import TopBar from "../Layout/TopBar.jsx";
 import HeadingSecondary from "../Typography/HeadingSecondary.jsx";
@@ -13,20 +14,25 @@ const Form = styled.form`
 
 const EditContactForm = () => {
   const [contact, setContact] = useState({});
+  const [contacts, ,] = useContacts();
+  useEffect(() => {
+    console.log("[new contacts ]", contacts);
+    // eslint-disable-next-line
+  }, []);
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(contact);
     try {
       const newContact = await axios({
-        method: "post",
-        url: "http://ubi-moz.ml/contacts/create/3000",
+        method: "PUT",
+        url: `http://ubi-moz.ml/contacts/update/3000/${contacts.editable.id}`,
         data: {
-          name: contact.name,
-          phone: contact.number,
+          name: contact.name || contacts.editable.name,
+          phone: contact.number || contacts.editable.contact,
         },
       });
       console.log(newContact);
-      alert("contacto adicionado com sucesso");
+      alert("contacto modificado com sucesso");
     } catch (error) {
       console.log(error);
     }
@@ -47,15 +53,17 @@ const EditContactForm = () => {
         name="name"
         placeholder="introduz o nome completo"
         changed={handleChange}
+        value={contacts.editable.name}
       />
       <Spacer size={3} />
 
       <AddField
         label="Número de celular"
-        type="number"
+        type="text"
         name="number"
         placeholder="introduz o numero"
         changed={handleChange}
+        value={contacts.editable.contact}
       />
     </Form>
   );

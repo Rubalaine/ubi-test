@@ -26,7 +26,7 @@ const Label = styled.label`
   font-weight: 700;
   color: black;
 `;
-const AddField = ({ name, type, placeholder, label, changed }) => {
+const AddField = ({ value, name, type, placeholder, label, changed }) => {
   return (
     <Card>
       <Label htmlFor={name}>{label}</Label>
@@ -37,6 +37,7 @@ const AddField = ({ name, type, placeholder, label, changed }) => {
         id={name}
         placeholder={placeholder}
         onChange={changed}
+        defaultValue={value}
       />
     </Card>
   );
