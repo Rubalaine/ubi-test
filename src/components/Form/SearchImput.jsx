@@ -33,7 +33,6 @@ const SearchImput = () => {
   const [contacts, setContacts] = useContacts();
   const [filterText, setFilterText] = useState("");
   useEffect(() => {
-    console.log(filterText);
     setContacts({
       ...contacts,
       filtered: contacts.list.filter((el) =>
