@@ -32,7 +32,7 @@ const Buttons = styled.div`
   justify-content: space-between;
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   opacity: ${(props) => (props.visible ? "1" : "0")};
-  transition: opacity 0.4s;
+  transition: opacity 0.5s, visibility 0.5s;
 `;
 const TextCard = styled.div``;
 const ContactCard = ({ image, name, contact, id }) => {
